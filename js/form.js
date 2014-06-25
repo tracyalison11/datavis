@@ -23,17 +23,9 @@
 // 	});
 // });
 
-var dataRef = new Firebase('https://codehscore.firebaseio.com/cohort1/users/Brendan' );
-dataRef.on('child_added', function(snap) {
-   console.log('parent record: ', snap.val());
-});
-
 
 $('.submit').on('click', function() {
 	var submission = $('.info').val();
-	console.log(submission);
-
-	//will pull these from database
 	var twitterNum = 0;
 	var redditNum = 0;
 	var stackNum = 0;
@@ -42,6 +34,49 @@ $('.submit').on('click', function() {
 	var blogNum = 0;
 	var linkedInNum = 0;
 	var totalDailyScore = 0;
+	
+	
+	var statRef = new Firebase('https://codehscore.firebaseio.com/cohort1/users/');
+
+	//create a date
+	var currentTime = new Date()
+	var month = currentTime.getMonth() + 1
+	var day = currentTime.getDate()
+	var year = currentTime.getFullYear()
+	var date = month + "-" + day + "-" + year;
+
+	var dateRef = new Firebase('https://codehscore.firebaseio.com/cohort1/users/Brendan1/stats/');
+	var checkRef = new Firebase('https://codehscore.firebaseio.com/cohort1/users/Brendan1/stats/');
+	
+
+	//check to see if stats for current date exist
+	checkRef.on('value', function(snapshot) {
+		var data = snapshot.val();
+	   console.log(data);
+	   if (snapshot.hasChild(date)){
+	   	console.log('start from db values');
+			twitterNum = data[date]['twitterNum'];
+			redditNum = data[date]['redditNum'];
+			stackNum = data[date]['stackNum'];
+			quoraNum = data[date]['quoraNum'];	
+			githubNum = data[date]['githubNum'];
+			blogNum = data[date]['blogNum'];
+			linkedInNum = data[date]['linkedInNum'];
+		}
+
+		else{
+			console.log('start at 0');
+			//will pull these from database
+			twitterNum = 0;
+			redditNum = 0;
+			stackNum = 0;
+			quoraNum = 0;	
+			githubNum = 0;
+			blogNum = 0;
+			linkedInNum = 0;
+			totalDailyScore = 0;
+		}
+	});
 
 	//regular expressions to match words
 	var twitterReg = /twitter/g;
@@ -80,13 +115,14 @@ $('.submit').on('click', function() {
 	if (blogCheck){
 		blogNum += 10;
 	}
-	var linkedInCount = $('.linkedIn').val();
+	var linkedInCount = parseInt($('.linkedIn').val());
 	console.log(linkedInCount);
 	if (linkedInCount){
 		linkedInNum += linkedInCount;
 	}
 
 	totalDailyScore += parseInt(twitterNum) + parseInt(redditNum) + parseInt(stackNum) + parseInt(quoraNum) + parseInt(githubNum) + parseInt(blogNum) + parseInt(linkedInNum);
+	dateRef.child(date).set({'twitterNum': parseInt(twitterNum), 'redditNum': parseInt(redditNum), 'stackNum': parseInt(stackNum), 'quoraNum': parseInt(quoraNum), 'githubNum': parseInt(githubNum), 'blogNum': parseInt(blogNum), 'linkedInNum': parseInt(linkedInNum), 'totalDailyScore': totalDailyScore})
 	console.log(totalDailyScore);
 	$('.news-feed').append("Total Daily Score: " + totalDailyScore);
 
