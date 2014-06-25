@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+	<title>Basic Template</title>
+</head>
+<body>
+	
+<div class="container col-center">
+	<form name="daily-form" class="form-horizontal">
+		<fieldset>
+	<div class="form-group">
+		<div class="col-lg-8 col-md-4 col-xs-4 col-center">
+			<label class="col-lg-4 control-label">Submit links</label>
+			<div class="col-lg-8 col-md-4">
+				<input class="info form-control" type="text" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-4 col-md-4 col-xs-4 col-center">
+			<label class="col-lg-5">Daily Github Push</label>
+			<div class="col-lg-4">
+				<input type="checkbox" class="github" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-4 col-md-4 col-xs-4 col-center">
+			<label class="col-lg-5">Blog Post</label>
+			<div class="col-lg-4">
+				<input type="checkbox" class="blog" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-8 col-md-4 col-xs-4 col-center">
+			<label class="col-lg-4 control-label">LinkedIn Connections</label>
+			<div class="col-lg-8 col-md-4">
+				<input class="linkedIn form-control" type="number" min="0" max="100" />
+			</div>
+		</div>
+	</div>
+</fieldset>
+</form>
+<div class="row">
+		<div class="col-lg-3 col-center">
+			<button class="btn btn-success submit">Submit</button>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6 col-md-6 news-feed col-center">
+
+		</div>
+	</div>
+</div>
+
+
+<script src="includes/jQuery-v2.1.1.js"></script>
+<!-- <script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script> -->
+<script src="js/form.js"></script>
+</body>
+</html>
