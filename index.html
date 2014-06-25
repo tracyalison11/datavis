@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Page</title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="includes/css/styles.css" rel="stylesheet">
+	<script type="text/javascript" src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
+	<script type="text/javascript" src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+</head>
+<body>
+<div class="container">
+	<form name="form1" class="form-horizontal" action=" " method="post" id="registerForm">
+		<h2>User Login Page</h2>
+
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-2 control-label " for="email">Email</label>
+					<div class="col-sm-6 col-offset-4">
+						<input type="email" name="email" required class=" userEmail col-sm-8  form-control">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label " for="password">Password</label>
+					<div class="col-sm-6 col-offset-4">
+						<input type="password" name="password" required class="col-sm-8  userPassword form-control">
+					</div>
+				</div>
+
+	
+			</fieldset>
+
+
+	</form>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<input type="submit" value="Log In" class="login btn btn-default">
+		</div>
+	</div>
+</div>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="includes/js/authlogin.js"></script>
+</body>
+</html>
