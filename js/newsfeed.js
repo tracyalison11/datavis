@@ -20,7 +20,7 @@ $(document).ready(function(){
 		//Display News Feed
 		var newsfeedRef = new Firebase('https://codehscore.firebaseio.com/users/' +user.uid+ '/stats');
 		var newsFeedRefQuery = newsfeedRef.limit(3);
-
+		var chartData = [];
 		newsFeedRefQuery.on('child_added', function(snap) {
 			var newsFeedData = snap.val();
 				console.log(newsFeedData);
@@ -35,7 +35,10 @@ $(document).ready(function(){
                         + "<li><i class='fa fa-linkedin fa-2x'></i>" + "<span class='statScore'>" + newsFeedData['linkedInNum'] + "</span>" + "</li>"
                         + "<li><i class='fa fa-signal fa-2x'></i>" + "<span class='statScore'>" + newsFeedData['totalDailyScore'] + "</span>" + "</li>"
                         );
-
+		
+		chartData.push(newsFeedData);
+		console.log(chartData);
+	
 			//DRAW CHART FROM SNAPSHOT
 			//Get context with jQuery - using jQuery's .get() method.
 			var ctx = $("#first-chart").get(0).getContext("2d");
@@ -43,18 +46,56 @@ $(document).ready(function(){
 			var myNewChart = new Chart(ctx);
 			console.log(myNewChart);
 			var data = {
-				labels : [newsFeedData['date'],newsFeedData['date'],newsFeedData['date']],
+				labels : [chartData[0].date,chartData[1].date,chartData[2].date],
 				datasets : [
+					//twitter
 					{
 						fillColor : "rgba(220,220,220,0.5)",
 						strokeColor : "rgba(220,220,220,1)",
-						data : [65,59,90,81,56,55,40]
+						data : [chartData[0].linkedInNum,chartData[1].linkedInNum,chartData[2].linkedInNum]
 					},
+					//reddit
 					{
 						fillColor : "rgba(151,187,205,0.5)",
 						strokeColor : "rgba(151,187,205,1)",
-						data : [28,48,40,19,96,27,100]
-					}
+						data : [chartData[0].totalDailyScore,chartData[1].totalDailyScore,chartData[2].totalDailyScore]
+					},
+					//stackoverflow
+					{
+						fillColor : "rgba(100,100,205,0.5)",
+						strokeColor : "rgba(100,100,205,1)",
+						data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
+					},
+					//quora
+					{
+						fillColor : "rgba(100,100,205,0.5)",
+						strokeColor : "rgba(100,100,205,1)",
+						data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
+					},
+					//github
+					{
+						fillColor : "rgba(100,100,205,0.5)",
+						strokeColor : "rgba(100,100,205,1)",
+						data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
+					},
+					//blog
+					{
+						fillColor : "rgba(100,100,205,0.5)",
+						strokeColor : "rgba(100,100,205,1)",
+						data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
+					},
+					//linkedIn
+					{
+						fillColor : "rgba(100,100,205,0.5)",
+						strokeColor : "rgba(100,100,205,1)",
+						data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
+					},
+					//totalDaily
+					{
+						fillColor : "rgba(100,100,205,0.5)",
+						strokeColor : "rgba(100,100,205,1)",
+						data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
+					},
 				]
 			}
 			new Chart(ctx).Bar(data);
