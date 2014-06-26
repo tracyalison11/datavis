@@ -25,7 +25,7 @@ var year = currentTime.getFullYear()
 var date = month + "-" + day + "-" + year;
 //check to see if stats for current date exist, if so, populate vars with db data
 var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' +userId+ '/stats/');
-alert("checkref=" + checkRef);
+// alert("checkref=" + checkRef);
 checkRef.on('value', function(snapshot) {
 	var data = snapshot.val();
 	if (snapshot.hasChild(date)){
