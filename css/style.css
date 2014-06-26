@@ -22,3 +22,11 @@ div .panel.panel-primary {
 	
 	margin-left: 295px;
 }
+.statScore{
+	float: right;
+	margin-right: 175px;
+	font-size: 1.2em;
+}
+li{
+	list-style-type: none;
+}
