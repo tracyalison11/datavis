@@ -1,4 +1,24 @@
-.col-center{
-	float: none;
-	margin: auto;
+.container {
+	width: 900px;
+}
+
+div .panel.panel-primary {
+	margin: 50px 100px 100px 0;
+	height: 300px;
+	width: 600px;
+}
+
+.form-horizontal .form-group {
+	margin-top: 10px;
+	padding: 5px 15px;
+}
+
+.checkbox {
+	position: relative;
+	float: right;
+}
+
+.btn {
+	
+	margin-left: 295px;
 }
