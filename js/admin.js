@@ -1,3 +1,29 @@
+$(document).ready(function(){
+
+	var chatRef = new Firebase('https://codehscore.firebaseio.com');
+	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+	  if (error) {
+	    // an error occurred while attempting login
+	   	alert(error);
+	  } else if (user) {
+	    // user authenticated with Firebase
+	    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+
+	    var dataRef = new Firebase('https://codehscore.firebaseio.com/users/'+user.uid+'/info/permissions');
+		dataRef.on('value' , function(snapshot) {
+			alert("Permissions for user 28 are " + snapshot.val());
+		},function(err) {
+  			// Read fails
+  			alert("User does not have permissions value set");
+		});
+
+	  } else {
+	  	//User is not logged in
+	    window.open('index.html', '_self');
+	  }
+	});
+});
+
 var userEmail, userPassword;
 var firebaseObj = new Firebase('https://codehscore.firebaseio.com');
 
@@ -23,8 +49,3 @@ $('.register').on('click', function(){
 	  userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'permissions': permissions, 'email': userEmail});
 	});
 });
-
-// var dataRef = new Firebase('https://codehscore.firebaseio.com/');
-// dataRef.on('child_added', function(snap) {
-//    console.log('parent record: ', snap.val());
-// });
