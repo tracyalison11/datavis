@@ -1,34 +1,54 @@
-	//create a date
-	var currentTime = new Date()
-	var month = currentTime.getMonth() + 1
-	var day = currentTime.getDate()
-	var year = currentTime.getFullYear()
-	var date = month + "-" + day + "-" + year;
+
+$(document).ready(function(){
+	var chatRef = new Firebase('https://codehscore.firebaseio.com');
+	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+		if (error) {
+	    // an error occurred while attempting login
+	    alert(error);
+	} else if (user) {
+	    // user authenticated with Firebase
+	    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+	    userId = user.uid;
+	    var dataRef = new Firebase('https://codehscore.firebaseio.com/users/'+user.uid+'/info/permissions');
+	    dataRef.on('value' , function(snapshot) {
+			// alert("Permissions for user 28 are " + snapshot.val());
+		},function(err) {
+  			// Read fails
+  			alert("User does not have permissions value set");
+  		});
+
+	    //create a date
+var currentTime = new Date()
+var month = currentTime.getMonth() + 1
+var day = currentTime.getDate()
+var year = currentTime.getFullYear()
+var date = month + "-" + day + "-" + year;
 //check to see if stats for current date exist, if so, populate vars with db data
-	var checkRef = new Firebase('https://codehscore.firebaseio.com/users/simplelogin:28/stats/');
-	checkRef.on('value', function(snapshot) {
-		var data = snapshot.val();
-	   if (snapshot.hasChild(date)){
-			twitterNum = data[date]['twitterNum'];
-			redditNum = data[date]['redditNum'];
-			stackNum = data[date]['stackNum'];
-			quoraNum = data[date]['quoraNum'];	
-			githubNum = data[date]['githubNum'];
-			blogNum = data[date]['blogNum'];
-			linkedInNum = data[date]['linkedInNum'];
-		}
-		//if stats for current date do not exist, make all vars 0
-		else{
-			twitterNum = 0;
-			redditNum = 0;
-			stackNum = 0;
-			quoraNum = 0;	
-			githubNum = 0;
-			blogNum = 0;
-			linkedInNum = 0;
-			totalDailyScore = 0;
-		}
-	});
+var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' +userId+ '/stats/');
+alert("checkref=" + checkRef);
+checkRef.on('value', function(snapshot) {
+	var data = snapshot.val();
+	if (snapshot.hasChild(date)){
+		twitterNum = data[date]['twitterNum'];
+		redditNum = data[date]['redditNum'];
+		stackNum = data[date]['stackNum'];
+		quoraNum = data[date]['quoraNum'];	
+		githubNum = data[date]['githubNum'];
+		blogNum = data[date]['blogNum'];
+		linkedInNum = data[date]['linkedInNum'];
+	}
+	//if stats for current date do not exist, make all vars 0
+	else{
+		twitterNum = 0;
+		redditNum = 0;
+		stackNum = 0;
+		quoraNum = 0;	
+		githubNum = 0;
+		blogNum = 0;
+		linkedInNum = 0;
+		totalDailyScore = 0;
+	}
+}); //end of checkRef.on callback
 
 $('.submit').on('click', function() {
 	var submission = $('.info').val();
@@ -56,7 +76,7 @@ $('.submit').on('click', function() {
 	//check to see if stats for current date exist, if so, populate vars with db data
 	checkRef.on('value', function(snapshot) {
 		var data = snapshot.val();
-	   if (snapshot.hasChild(date)){
+		if (snapshot.hasChild(date)){
 			twitterNum = data[date]['twitterNum'];
 			redditNum = data[date]['redditNum'];
 			stackNum = data[date]['stackNum'];
@@ -121,13 +141,17 @@ $('.submit').on('click', function() {
 	totalDailyScore += twitterNum + redditNum + stackNum + quoraNum + githubNum + blogNum + linkedInNum;
 	//set values for current date in database
 	checkRef.child(date).set({'twitterNum': twitterNum, 'redditNum': redditNum, 
-							'stackNum': stackNum, 'quoraNum': quoraNum, 
-							'githubNum': githubNum, 'blogNum': blogNum, 
-							'linkedInNum': linkedInNum, 'totalDailyScore': totalDailyScore, 
-							'date': date}, onComplete );
+		'stackNum': stackNum, 'quoraNum': quoraNum, 
+		'githubNum': githubNum, 'blogNum': blogNum, 
+		'linkedInNum': linkedInNum, 'totalDailyScore': totalDailyScore, 
+		'date': date}, onComplete );
 	
 
+}); //END OF SUBMIT BUTTON EVENT HANDLER
+
+	} else {
+	  	//User is not logged in
+	  	window.open('index.html', '_self');
+	  }
+	}); //END OF AUTH CALLBACK FUNCTION
 });
-
-
-
