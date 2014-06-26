@@ -10,25 +10,21 @@ $('.register').on('click', function(){
 	var cohort = $('.cohort').val();
 	var permissions = $('.permissions').val();
 	
-	var userRef = new Firebase('https://codehscore.firebaseio.com/cohort' + cohort);
+	var userRef = new Firebase('https://codehscore.firebaseio.com/users');
 
 	var auth = new FirebaseSimpleLogin(firebaseObj, function(error, user) {
 	console.log(error, user);
 	});
 	auth.createUser(userEmail, userPassword, function(error, user) {
 	  if (!error) {
-	    console.log('User Id: ' + user.uid + ', Email: ' + user.email); 
+	    console.log('User Id: ' + user.uid + ', Email: ' + user.email);
+	    alert(user.email + "has been added to the database with id: " + user.uid); 
 	  }
-	  userRef.child('users/'+firstName + '/info').set({'user': user.uid, 'firstName': firstName, 'lastName': lastName, 'permissions': permissions, 'email': userEmail});
+	  userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'permissions': permissions, 'email': userEmail});
 	});
-	// auth.login('password', {
-	//   email: userEmail,
-	//   password: userPassword,
-	//  // rememberMe: true
-	// });
 });
 
-var dataRef = new Firebase('https://codehscore.firebaseio.com/');
-dataRef.on('child_added', function(snap) {
-   console.log('parent record: ', snap.val());
-});
+// var dataRef = new Firebase('https://codehscore.firebaseio.com/');
+// dataRef.on('child_added', function(snap) {
+//    console.log('parent record: ', snap.val());
+// });
