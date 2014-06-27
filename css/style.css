@@ -42,12 +42,14 @@ div .panel.panel-primary {
 }
 .statistics li{
 	display: inline;
+	margin-bottom: 5px;
 	padding: 5px;
 }
-.statistics li:hover{
-	height:110%;
-	width: 110%;
+
+.filter-icons .fa:hover {
+	font-size:3em;
 }
+
 .filter-icons i {
 	color: #bf3e11;
 }
@@ -72,3 +74,31 @@ h1 {
 table tr td {
 	color: #bf3e11;
 }
+
+.report h1 {
+	/*text-align: center*/
+}
+
+.newsFeed {
+	float: left;
+}
+
+
+
+.dataNum {
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

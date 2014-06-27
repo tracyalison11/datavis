@@ -20,7 +20,7 @@
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">News Feed</a></li>
+      <li class="active"><a href="newsfeeds.html">News Feed</a></li>
       <li><a href="form.html">Submit Data</a></li>
       <li id="admin"></li>
     </ul>
@@ -28,31 +28,15 @@
       <li><a id="signOut" href="#">Sign Out</a></li>
     </ul>
   </div>
-</div>	
-<div class="container">
-	<div class="row">
-		<div class="col-lg-4 col-md-4">
-      <h1>News Feed</h1>
-      <div class="news-feed">
-
-      </div>
-		</div>
-		<div class="col-lg-8 col-md-8 report">
-      <h1 class="col-center">Statistics</h1>
-      <ul class="statistics">
-
-      </ul>
-			<canvas id="first-chart" width="600" height="400"></canvas>
-      <ul class="col legend">
-
-      </ul>
-		</div>
-	</div>
-</div>
-
-<script src="includes/jQuery-v2.1.1.js"></script>
-<script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
-<script src="js/newsfeed.js"></script>
-<script src="includes/Chart.js"></script>
+ </div>
+<div class="phone">
+Phone Number: <input class="phone" type="text" /></div>
+<div class="name">Recipients Name: <input class="customer" type="text" /></div>
+Message: <textarea row="3" col="3" class="msg"></textarea>
+<button class="send" type="button"> SEND </button>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript" src="send.js"></script>
 </body>
 </html>
+
+
