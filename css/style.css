@@ -1,5 +1,6 @@
 .container {
-	width: 900px;
+	width: 620px;
+	margin: 0 auto;
 }
 
 div .panel.panel-primary {
@@ -23,3 +24,14 @@ div .panel.panel-primary {
 	margin-left: 295px;
 }
 
+img {
+	display: block;
+    margin: 0 auto;
+    margin-top: 65px;
+	width: 150px;
+	height: 150px;
+}
+
+h2 {
+	text-align: center;
+}
