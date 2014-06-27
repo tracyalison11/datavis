@@ -1,0 +1,26 @@
+label .control-label {
+	text-align: center;
+}
+
+.panel-title {
+	text-align: center;
+}
+
+.panel.panel-primary {
+	margin: 20px auto;
+	height: 
+}
+
+.control-label1 {
+	margin-left: 80px;
+	font-size: 1.15em;
+}
+
+.checkboxRow {
+	margin-left: 65px;
+}
+
+.btn-container {
+	float: right;
+	margin-right: 150px;
+}
