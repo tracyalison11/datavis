@@ -22,6 +22,34 @@ $(document).ready(function(){
 	    window.open('index.html', '_self');
 	  }
 	});
+
+	$('#admin_form').validate({
+		rules: {
+			firstName_input: {
+				required: true
+			},
+			lastName_input: {
+				required: true
+			},
+			phone_input: {
+				required: true
+			},
+			email_input: {
+				required: true,
+				email: true
+			},
+			password: {
+				required: true,
+				minlength: 6
+
+			},
+			confirm_password: {
+				required: true,
+				equalTo: '#1password'
+			}
+		}
+	});
+
 });
 
 var userEmail, userPassword;
