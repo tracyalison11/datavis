@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Login Page</title>
+	<title>Login</title>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 	<script type="text/javascript" src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
 	<script type="text/javascript" src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+	<link rel="icon" 
+      type="image/ico" 
+      href="img/stat.ico">
 </head>
 <body>
+<img src="img/statistics.png">
 <div class="container">
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
@@ -28,7 +32,7 @@
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<input type="password" name="password" required class="col-sm-8  userPassword form-control">
 						<label class="checkbox">
-						  <input type="checkbox"> Remember Me
+						  <input id="checkbox" type="checkbox"> Remember Me
 						</label>
 					</div>
 				</div>

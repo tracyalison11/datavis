@@ -1,0 +1,16 @@
+.panel {
+	width: 80%;
+}
+
+.panel .panel-body {
+	margin: 0 auto;
+}
+
+.pushleft {
+	margin-left: 20px;
+}
+
+.btn {
+
+	margin-left: 300px;
+}
