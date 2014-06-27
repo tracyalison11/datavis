@@ -24,31 +24,33 @@ $(document).ready(function(){
 	});
 
 	$('#admin_form').validate({
-		rules: {
-			firstName_input: {
-				required: true
-			},
-			lastName_input: {
-				required: true
-			},
-			phone_input: {
-				required: true
-			},
-			email_input: {
-				required: true,
-				email: true
-			},
-			password: {
-				required: true,
-				minlength: 6
+        rules: {
+            firstName_input: {
+                required: true
+            },
+            lastName_input: {
+                required: true
+            },
+            phone_input: {
+                required: true,
+                minlength: 10,
+                maxlength: 10
+            },
+            email_input: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true,
+                minlength: 6
 
-			},
-			confirm_password: {
-				required: true,
-				equalTo: '#1password'
-			}
-		}
-	});
+            },
+            confirm_password: {
+                required: true,
+                equalTo: '#1password'
+            }
+        }
+    });
 
 });
 
@@ -72,10 +74,13 @@ $('.register').on('click', function(){
 	});
 	auth.createUser(userEmail, userPassword, function(error, user) {
 	  if (!error) {
+        userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'phoneNum': phoneNum, 'permissions': permissions, 'email': userEmail});
 	    console.log('User Id: ' + user.uid + ', Email: ' + user.email);
-	    alert(user.email + "has been added to the database with id: " + user.uid); 
-	  }
-	  userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'phoneNum': phoneNum, 'permissions': permissions, 'email': userEmail});
+        window.open("admin.html", "_self");
+	  } else {
+          alert(error);
+      }
+
 
 	});
 });
