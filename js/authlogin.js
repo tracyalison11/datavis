@@ -5,6 +5,7 @@ $(document).ready(function(){
 	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 	  if (error) { 
 	    // an error occurred while attempting login
+          alert("Either your email or password is not correct");
 	    console.log(error);
 	  } else if (user) {
 	    // user authenticated with Firebase
