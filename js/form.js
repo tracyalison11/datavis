@@ -7,10 +7,20 @@ $(document).ready(function(){
 	} else if (user) {
 	    // user authenticated with Firebase
 	    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+
+        $('#signOut').on('click', function () {
+            auth.logout();
+        });
+
 	    userId = user.uid;
 	    var dataRef = new Firebase('https://codehscore.firebaseio.com/users/'+user.uid+'/info/permissions');
 	    dataRef.on('value' , function(snapshot) {
-			// alert("Permissions for user 28 are " + snapshot.val());
+            if(snapshot.val() == 1){
+                $('#admin').append(
+                    $('<a></a>').attr('href','admin.html').text("Admin")
+                );
+
+            }
 		},function(err) {
   			// Read fails
   			alert("User does not have permissions value set");
