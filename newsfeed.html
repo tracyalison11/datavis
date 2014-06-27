@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+
 	<title>News Feed</title>
 </head>
 <body>
@@ -33,10 +35,15 @@
 		<div class="col-lg-4 col-md-4 news-feed">
 
 		</div>
+		<div class="col-lg-8 col-md-8 report">
+			<canvas id="first-chart" width="600" height="400"></canvas>
+		</div>
 	</div>
+</div>
 
 <script src="includes/jQuery-v2.1.1.js"></script>
 <script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
 <script src="js/newsfeed.js"></script>
+<script src="includes/Chart.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	var chatRef = new Firebase('https://codehscore.firebaseio.com');
 	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
@@ -24,8 +23,8 @@ var day = currentTime.getDate()
 var year = currentTime.getFullYear()
 var date = month + "-" + day + "-" + year;
 //check to see if stats for current date exist, if so, populate vars with db data
-var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' +userId+ '/stats/');
-// alert("checkref=" + checkRef);
+var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' +user.uid+ '/stats/');
+
 checkRef.on('value', function(snapshot) {
 	var data = snapshot.val();
 	if (snapshot.hasChild(date)){
@@ -71,7 +70,7 @@ $('.submit').on('click', function() {
 	var date = month + "-" + day + "-" + year;
 
 	// var dateRef = new Firebase('https://codehscore.firebaseio.com/users/simplelogin:28/stats/');
-	var checkRef = new Firebase('https://codehscore.firebaseio.com/users/simplelogin:28/stats/');
+	var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' + user.uid + '/stats/');
 	
 	//check to see if stats for current date exist, if so, populate vars with db data
 	checkRef.on('value', function(snapshot) {
