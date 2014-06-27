@@ -28,14 +28,19 @@ div .panel.panel-primary {
 	margin-left: 175px;
 	font-size: 1.2em;
 }
-ul{
-	columns:6;
-	-webkit-columns:6;
-}
-li{
+
+
+.legend ul {
+	text-align: center;
 	list-style-type: none;
-	width: 25%;
+
 }
+
+.legend li {
+	display: inline;
+	padding: 10px;
+}
+
 
 img {
 	display: block;
@@ -47,4 +52,12 @@ img {
 
 h2 {
 	text-align: center;
+}
+
+h1 {
+	color: #bf3e11;
+}
+
+table tr td {
+	color: #bf3e11;
 }
