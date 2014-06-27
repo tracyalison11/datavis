@@ -28,7 +28,7 @@ $(document).ready(function(){
 			$('.news-feed').prepend("<br>"
                 + "<table class='table table-hover'> <tr>"
                 + "<td colspan='2'><strong>" + newsFeedData['date'] + "</strong></td>"
-                + "<td><i class='fa fa-signal fa-2x'></i>" + "</td><td>" +newsFeedData['totalDailyScore'] + "</td>"
+                + "<td><i class='fa fa-star fa-2x'></i>" + "</td><td>" +newsFeedData['totalDailyScore'] + "</td>"
                 + "</tr> <tr>"
                 + "<td><i class='fa fa-twitter fa-2x'></i>" + "</td><td>" +newsFeedData['twitterNum'] + "</td>"
                 + "<td><i class='fa fa-reddit fa-2x'></i>" + "</td><td>" +newsFeedData['redditNum'] + "</td>"
@@ -195,7 +195,7 @@ $(document).ready(function(){
 				$('<li></li>',{
 					text: nameArr[k]
 				}).appendTo(".legend").css("color", "rgba("+colorsArray[colorIndex++]+"," +colorsArray[colorIndex++]+ "," +colorsArray[colorIndex++]+ ",1)")
-				.css("font-size", "2em");
+				.css("font-size", "1.5em");
 
 			}
 			

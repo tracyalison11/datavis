@@ -23,7 +23,7 @@ var day = currentTime.getDate()
 var year = currentTime.getFullYear()
 var date = month + "-" + day + "-" + year;
 //used to insert dummy data
- date = '6-26-2014';
+ // date = '6-25-2014';
 
 //check to see if stats for current date exist, if so, populate vars with db data
 var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' +user.uid+ '/stats/');
@@ -75,7 +75,7 @@ $('.submit').on('click', function() {
 	var year = currentTime.getFullYear()
 	var date = month + "-" + day + "-" + year;
 	// used to insert dummy data
-	date = '6-26-2014'; 
+	// date = '6-25-2014'; 
 
 	// var dateRef = new Firebase('https://codehscore.firebaseio.com/users/simplelogin:28/stats/');
 	var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' + user.uid + '/stats/');
