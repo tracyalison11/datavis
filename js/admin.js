@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	var chatRef = new Firebase('https://codehscore.firebaseio.com');
 	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 	  if (error) {
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 	    var dataRef = new Firebase('https://codehscore.firebaseio.com/users/'+user.uid+'/info/permissions');
 		dataRef.on('value' , function(snapshot) {
-			alert("Permissions for user 28 are " + snapshot.val());
+			// alert("Permissions for user 28 are " + snapshot.val());
 		},function(err) {
   			// Read fails
   			alert("User does not have permissions value set");
@@ -48,5 +48,6 @@ $('.register').on('click', function(){
 	    alert(user.email + "has been added to the database with id: " + user.uid); 
 	  }
 	  userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'phoneNum': phoneNum, 'permissions': permissions, 'email': userEmail});
+
 	});
 });

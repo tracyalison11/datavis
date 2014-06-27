@@ -1,5 +1,6 @@
 .container {
-	width: 900px;
+	width: 620px;
+	margin: 0 auto;
 }
 
 div .panel.panel-primary {
@@ -21,4 +22,42 @@ div .panel.panel-primary {
 .btn {
 	
 	margin-left: 295px;
+}
+.statScore{
+	float: right;
+	margin-left: 175px;
+	font-size: 1.2em;
+}
+
+
+.legend ul {
+	text-align: center;
+	list-style-type: none;
+
+}
+
+.legend li {
+	display: inline;
+	padding: 10px;
+}
+
+
+img {
+	display: block;
+    margin: 0 auto;
+    margin-top: 65px;
+	width: 150px;
+	height: 150px;
+}
+
+h2 {
+	text-align: center;
+}
+
+h1 {
+	color: #bf3e11;
+}
+
+table tr td {
+	color: #bf3e11;
 }

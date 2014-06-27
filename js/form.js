@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	var chatRef = new Firebase('https://codehscore.firebaseio.com');
 	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
@@ -23,9 +22,12 @@ var month = currentTime.getMonth() + 1
 var day = currentTime.getDate()
 var year = currentTime.getFullYear()
 var date = month + "-" + day + "-" + year;
+//used to insert dummy data
+ // date = '6-25-2014';
+
 //check to see if stats for current date exist, if so, populate vars with db data
-var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' +userId+ '/stats/');
-alert("checkref=" + checkRef);
+var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' +user.uid+ '/stats/');
+
 checkRef.on('value', function(snapshot) {
 	var data = snapshot.val();
 	if (snapshot.hasChild(date)){
@@ -36,6 +38,7 @@ checkRef.on('value', function(snapshot) {
 		githubNum = data[date]['githubNum'];
 		blogNum = data[date]['blogNum'];
 		linkedInNum = data[date]['linkedInNum'];
+		dailyTicketNum = data[date]['dailyTicketNum'];
 	}
 	//if stats for current date do not exist, make all vars 0
 	else{
@@ -46,6 +49,7 @@ checkRef.on('value', function(snapshot) {
 		githubNum = 0;
 		blogNum = 0;
 		linkedInNum = 0;
+		dailyTicketNum = 0
 		totalDailyScore = 0;
 	}
 }); //end of checkRef.on callback
@@ -60,6 +64,7 @@ $('.submit').on('click', function() {
 	var blogNum = 0;
 	var linkedInNum = 0;
 	var totalDailyScore = 0;
+	var dailyTicketNum = 0;
 	
 	var statRef = new Firebase('https://codehscore.firebaseio.com/users/');
 
@@ -69,9 +74,11 @@ $('.submit').on('click', function() {
 	var day = currentTime.getDate()
 	var year = currentTime.getFullYear()
 	var date = month + "-" + day + "-" + year;
+	// used to insert dummy data
+	// date = '6-25-2014'; 
 
 	// var dateRef = new Firebase('https://codehscore.firebaseio.com/users/simplelogin:28/stats/');
-	var checkRef = new Firebase('https://codehscore.firebaseio.com/users/simplelogin:28/stats/');
+	var checkRef = new Firebase('https://codehscore.firebaseio.com/users/' + user.uid + '/stats/');
 	
 	//check to see if stats for current date exist, if so, populate vars with db data
 	checkRef.on('value', function(snapshot) {
@@ -84,6 +91,7 @@ $('.submit').on('click', function() {
 			githubNum = data[date]['githubNum'];
 			blogNum = data[date]['blogNum'];
 			linkedInNum = data[date]['linkedInNum'];
+			dailyTicketNum = data[date]['dailyTicketNum'];
 		}
 		//if stats for current date do not exist, make all vars 0
 		else{
@@ -94,6 +102,7 @@ $('.submit').on('click', function() {
 			githubNum = 0;
 			blogNum = 0;
 			linkedInNum = 0;
+			dailyTicketNum = 0;
 			totalDailyScore = 0;
 		}
 	});
@@ -123,11 +132,15 @@ $('.submit').on('click', function() {
 	}
 	var githubCheck = $('.github').is(':checked');
 	if (githubCheck){
-		githubNum += 1;
+		githubNum = 5;
 	}
 	var blogCheck = $('.blog').is(':checked');
 	if (blogCheck){
-		blogNum += 10;
+		blogNum = 10;
+	}
+	var dailyTicketCheck = $('.dailyTicket').is(':checked');
+	if (dailyTicketCheck){
+		dailyTicketNum = 2;
 	}
 	var linkedInCount = parseInt($('.linkedIn').val());
 	if (linkedInCount){
@@ -138,13 +151,13 @@ $('.submit').on('click', function() {
 		window.open('newsfeed.html', '_self');
 	}
 
-	totalDailyScore += twitterNum + redditNum + stackNum + quoraNum + githubNum + blogNum + linkedInNum;
+	totalDailyScore += twitterNum + redditNum + stackNum + quoraNum + githubNum + blogNum + linkedInNum + dailyTicketNum;
 	//set values for current date in database
 	checkRef.child(date).set({'twitterNum': twitterNum, 'redditNum': redditNum, 
 		'stackNum': stackNum, 'quoraNum': quoraNum, 
 		'githubNum': githubNum, 'blogNum': blogNum, 
 		'linkedInNum': linkedInNum, 'totalDailyScore': totalDailyScore, 
-		'date': date}, onComplete );
+		'date': date, 'dailyTicketNum': dailyTicketNum}, onComplete );
 	
 
 }); //END OF SUBMIT BUTTON EVENT HANDLER

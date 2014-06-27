@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	var chatRef = new Firebase('https://codehscore.firebaseio.com');
 	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-	  if (error) {
+	  if (error) { 
 	    // an error occurred while attempting login
 	    console.log(error);
 	  } else if (user) {
@@ -30,7 +30,7 @@ $(document).ready(function(){
 		auth.login('password', {
 		email: userEmail,
 		password: userPassword,
-		rememberMe: rememberMe;
+		rememberMe: rememberMe
 		});
 		
 	});

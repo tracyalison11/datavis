@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/adminstyle.css">
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
 	<title>Basic Template</title>
 </head>
@@ -28,61 +28,116 @@
 	  </div>
 	</div>
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-xs-4 col-center">
-				First Name<input class="firstName form-control" type="text" placeholder="John" />
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Enter User Information</h3>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-xs-4 col-center">
-				Last Name<input class="lastName form-control" type="text" placeholder="Doe" />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-center">
-				Phone <input class="phone form-control" type="text" placeholder="123456789" />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-xs-4 col-center">
-				Email<input class="email form-control" type="text" placeholder="john@gmail.com" />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-center">
-				Password <input class="password form-control" type="password" placeholder="password" />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-center">
-				Cohort Number<select class="cohort form-control">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-center">
-				Permissions<select class="permissions form-control">
-					<option value="1">1</option>
-					<option value="2">2</option>
-				</select>
-			</div>
-		</div>
-		<br />
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-center">
-					<button class="btn btn-success register">Register Member</button>
-				</div>
-			</div>
-	</div>
+
+			<div class="panel-body panel-body-form">
+				<form name="daily-form" class="form-horizontal">
+					<fieldset>
+						<div class="form-group">
+							<div class="row">
+								<div class="pushleft col-lg-4 col-md-4 col-xs-4 col-center">
+									<label for="" class="control-label">First Name</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-xs-4 col-center">
+									<input class="firstName form-control" type="text" placeholder="John" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="pushleft col-lg-4 col-md-4 col-xs-4 col-center">
+									<label for="" class="control-label">Last Name</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-xs-4 col-center">
+									<input class="lastName form-control" type="text" placeholder="John" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="pushleft col-lg-4 col-md-4 col-xs-4 col-center">
+									<label for="" class="control-label">Phone Number</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-xs-4 col-center">
+									<input class="phone form-control" type="text" placeholder="John" />
+								</div>
+							</div>
+						</div>
+							
+						<div class="form-group">
+							<div class="row">
+								<div class="pushleft col-lg-4 col-md-4 col-xs-4 col-center">
+									<label for="" class="control-label">E-Mail</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-xs-4 col-center">
+									<input class="email form-control" type="text" placeholder="john@gmail.com" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<div class="pushleft col-lg-4 col-md-4 col-xs-4 col-center">
+									<label for="" class="control-label">Password</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-xs-4 col-center">
+									<input class="password form-control" type="text" placeholder="password" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="pushleft col-lg-4 col-md-4 col-center">
+									<label>Cohort Number</label>
+								</div>
+								<div class="col-log-4 col-md-4 col-center">
+										<select class="cohort form-control">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+										</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="pushleft col-lg-4 col-md-4 col-center">
+									<label for="">Permissions</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-center">
+									<select class="permissions form-control">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</div>
+							</div>
+						</div>
+							<br />
+							<div class="btn-container">
+								<div class="form-group">
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-center">
+										<button class="btn btn-primary register">Register Member</button>
+									</div>
+								</div>
+								</div>
+							</div>
+					</fieldset>
+				</form>				
+			</div>					
+		</div> <!-- end of panel -->
+	</div> <!-- end of container -->
 
 
 <script src="includes/jQuery-v2.1.1.js"></script>
