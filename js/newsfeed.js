@@ -51,77 +51,24 @@ $(document).ready(function(){
                 + "<td><i class='fa fa-linkedin fa-2x'></i>" + "</td><td>" +newsFeedData['linkedInNum'] + "</td>"
                 + "<td><i class='fa fa-check-square-o fa-2x'></i>" + "</td><td>" +newsFeedData['dailyTicketNum'] + "</td>"
                 + "</tr> </table>"
-        );
-
-		// chartData.push(newsFeedData);
-		// console.log(chartData);
-		
-		// 	//DRAW CHART FROM SNAPSHOT
-		// 	//Get context with jQuery - using jQuery's .get() method.
-		// 	var ctx = $("#first-chart").get(0).getContext("2d");
-		// 	//This will get the first returned node in the jQuery collection.
-		// 	var myNewChart = new Chart(ctx);
-			
-		// 	var data = {
-		// 		labels : [chartData[0].date,chartData[1].date,chartData[2].date],
-		// 		datasets : [
-		// 			//twitter
-		// 			{
-		// 				fillColor : "rgba(220,220,220,0.5)",
-		// 				strokeColor : "rgba(220,220,220,1)",
-		// 				data : [chartData[0].linkedInNum,chartData[1].linkedInNum,chartData[2].linkedInNum]
-		// 			},
-		// 			//reddit
-		// 			{
-		// 				fillColor : "rgba(151,187,205,0.5)",
-		// 				strokeColor : "rgba(151,187,205,1)",
-		// 				data : [chartData[0].totalDailyScore,chartData[1].totalDailyScore,chartData[2].totalDailyScore]
-		// 			},
-		// 			//stackoverflow
-		// 			{
-		// 				fillColor : "rgba(100,100,205,0.5)",
-		// 				strokeColor : "rgba(100,100,205,1)",
-		// 				data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
-		// 			},
-		// 			//quora
-		// 			{
-		// 				fillColor : "rgba(100,100,205,0.5)",
-		// 				strokeColor : "rgba(100,100,205,1)",
-		// 				data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
-		// 			},
-		// 			//github
-		// 			{
-		// 				fillColor : "rgba(100,100,205,0.5)",
-		// 				strokeColor : "rgba(100,100,205,1)",
-		// 				data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
-		// 			},
-		// 			//blog
-		// 			{
-		// 				fillColor : "rgba(100,100,205,0.5)",
-		// 				strokeColor : "rgba(100,100,205,1)",
-		// 				data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
-		// 			},
-		// 			//linkedIn
-		// 			{
-		// 				fillColor : "rgba(100,100,205,0.5)",
-		// 				strokeColor : "rgba(100,100,205,1)",
-		// 				data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
-		// 			},
-		// 			//totalDaily
-		// 			{
-		// 				fillColor : "rgba(100,100,205,0.5)",
-		// 				strokeColor : "rgba(100,100,205,1)",
-		// 				data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
-		// 			},
-		// 		]
-		// 	}
-		// 	new Chart(ctx).Bar(data);
-			
+        );	
 
 		}); //END OF CURRENT USERS CALLBACK
 
 		
 		//ALL USERS GRAPH STUFF-------------------------------------------------------------------------
+		//create selectable filter buttons for graph
+			$('.statistics').append('<div class="filter-icons"><li><i class="fa fa-star fa-2x" data-filter="totalDailyScore"></i></li>' 
+				+ '<li><i class="fa fa-twitter fa-2x" data-filter="twitterNum"></i></li>' 
+				+ '<li><i class="fa fa-reddit fa-2x" data-filter="redditNum"></i></li>' 
+				+ '<li><i class="fa fa-stack-overflow fa-2x" data-filter="stackNum"></i></li>'
+				+ '<li><i class="fa fa-comment-o fa-flip-horizontal fa-2x" data-filter="quoraNum"></i></li>' 
+				+ '<li><i class="fa fa-github-alt fa-2x" data-filter="githubNum"></i></li>'
+				+ '<li><i class="fa fa-pencil-square fa-2x" data-filter="blogNum"></i></li>' 
+				+ '<li><i class="fa fa-linkedin fa-2x" data-filter="linkedInNum"></i></li>'
+				+ '<li><i class="fa fa-check-square-o fa-2x" data-filter="dailyTicketNum"></i></li></div>');
+
+
 		var allUsersChartData = [];
 		var testArr = [];
 		//get all users info
@@ -154,24 +101,50 @@ $(document).ready(function(){
 		var year = date1.getFullYear()
 		var date1 = month + "-" + day + "-" + year;
 
+		var filterVar = "totalDailyScore";
+		$('.filter-icons').on('click', 'i', function(){
+			filterVar = $(this).data('filter');
+			console.log(filterVar);
+			$('.legend').html("");
+			drawChart();
+		});
 
-		var arr = [];
-		var nameArr = [];
+		var drawChart = function(){
+		//allUsersCALLBACK
 		allUsersRef.on('value',function(snapshot){
 			var allUsersData = snapshot.val();
-			console.log(allUsersData);
-			var index = 0;
 			
+			var index = 0;
+			//create arr to hold numbers from users
+			var arr = [];
+			//create nameArr to hold names of users to associate numbers with
+			var nameArr = [];
+			//for each user, get wanted data
 			snapshot.forEach(function(childSnapshot){
-				index++;
 				var childData = childSnapshot.val();
 				console.log(childData);
-				arr.push([childData.stats[date3].totalDailyScore, childData.stats[date2].totalDailyScore, childData.stats[date1].totalDailyScore]);
-				console.log(arr);
-				nameArr.push(childData['info']['firstName']);
-				console.log(nameArr);
-			});
-			
+				if(childSnapshot.hasChild('stats')){	
+					
+
+					if(childSnapshot.hasChild('stats/'+ date3) == true && childSnapshot.hasChild('stats/'+ date2) == true && childSnapshot.hasChild('stats/'+ date1) == true){		
+						if(childData.stats[date3].totalDailyScore == "undefined"){
+							childData.stats[date3].totalDailyScore = 0;
+						}
+						if(childData.stats[date2].totalDailyScore == "undefined"){
+							childData.stats[date2].totalDailyScore = 0;
+						}
+						if(childData.stats[date1].totalDailyScore == "undefined"){
+							childData.stats[date1].totalDailyScore = 0;
+						}
+					index++;	
+					arr.push([childData.stats[date3][filterVar], childData.stats[date2][filterVar], childData.stats[date1][filterVar]]);
+					nameArr.push(childData['info']['firstName']);
+					console.log(arr);
+					}	
+				
+				}
+			}); //end of forEach loop
+			//create chartArray to hold colors, and data necessary for chart object
 			var chartArray = [];
 			var colorsArray = [];
 			for(var i=0; i<index; i++){
@@ -179,7 +152,6 @@ $(document).ready(function(){
 				var randColor2 = Math.floor(Math.random()*256);
 				var randColor3 = Math.floor(Math.random()*256);
 				colorsArray.push(randColor,randColor2,randColor3);
-
 				chartArray.push(
 					{
 						fillColor : "rgba("+randColor+"," +randColor2+ "," +randColor3+ ",0.5)",
@@ -188,7 +160,6 @@ $(document).ready(function(){
 					}
 					);
 			}
-			console.log(colorsArray);
 			//Get context with jQuery - using jQuery's .get() method.
 			var ctx = $("#first-chart").get(0).getContext("2d");
 			//This will get the first returned node in the jQuery collection.
@@ -197,8 +168,69 @@ $(document).ready(function(){
 			var data = {
 				labels : [date3,date2,date1],
 				datasets : chartArray
+
 			}
-			new Chart(ctx).Bar(data);
+			//check to see if all values of data are equal, if yes, FLAG for options
+			var optionsFlag = false;
+			var optionsCount = 0;
+			for (var z = 0; z<arr.length; z++){
+				var CONST = arr[0][0];
+				if (CONST == arr[z][0] && CONST == arr[z][1] && CONST == arr[z][2]){
+					optionsCount++;
+				}
+			}
+			
+			if(optionsCount == arr.length){
+				optionsFlag = true;
+			}else{
+				optionsFlag = false;
+			}
+			
+			if (optionsFlag){
+				if(filterVar == "githubNum"){
+					var options = {
+						scaleOverride: true,
+						//** Required if scaleOverride is true **
+						//Number - The number of steps in a hard coded scale
+						scaleSteps : 10,
+						//Number - The value jump in the hard coded scale
+						scaleStepWidth : 0.5,
+						//Number - The scale starting value
+						scaleStartValue : 0,
+						}
+					}
+					else if(filterVar == "blogNum"){
+						var options = {
+						scaleOverlay: true,
+						scaleOverride: true,
+						//** Required if scaleOverride is true **
+						//Number - The number of steps in a hard coded scale
+						scaleSteps : 10,
+						//Number - The value jump in the hard coded scale
+						scaleStepWidth : 1,
+						//Number - The scale starting value
+						scaleStartValue : 0,
+						}
+					}
+					else if(filterVar == "dailyTicketNum"){
+						var options = {
+						scaleOverlay: true,
+						scaleOverride: true,
+						//** Required if scaleOverride is true **
+						//Number - The number of steps in a hard coded scale
+						scaleSteps : 8,
+						//Number - The value jump in the hard coded scale
+						scaleStepWidth : 0.25,
+						//Number - The scale starting value
+						scaleStartValue : 0,
+						}
+					}
+				new Chart(ctx).Bar(data,options);
+			}else{
+				new Chart(ctx).Bar(data);
+			}
+
+			//add a legend with colors to indicate user
 			var colorIndex = 0;
 			for (var k=0; k<nameArr.length; k++){
 				$('<li></li>',{
@@ -210,8 +242,7 @@ $(document).ready(function(){
 			
 
 		}); //End of ALL USERS CALLBACK
-		
-
+	}
 
 	  } else {
 	  	//User is not logged in
