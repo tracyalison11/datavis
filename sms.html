@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+
+	<title>News Feed</title>
+</head>
+<body>
+<div class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Data Visualization</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="newsfeeds.html">News Feed</a></li>
+      <li><a href="form.html">Submit Data</a></li>
+      <li id="admin"></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a id="signOut" href="#">Sign Out</a></li>
+    </ul>
+  </div>
+ </div>
+<div class="phone">
+Phone Number: <input class="phone" type="text" /></div>
+<div class="name">Recipients Name: <input class="customer" type="text" /></div>
+Message: <textarea row="3" col="3" class="msg"></textarea>
+<button class="send" type="button"> SEND </button>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript" src="send.js"></script>
+</body>
+</html>
+
+
