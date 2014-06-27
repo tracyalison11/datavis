@@ -9,6 +9,8 @@ $(document).ready(function(){
 	  } else if (user) {
 	    // user authenticated with Firebase
 	    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+
+        window.open('newsfeed.html', '_self');
 	  } else {
 	    // user is logged out
 	  }
