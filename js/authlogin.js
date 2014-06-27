@@ -17,7 +17,11 @@ $(document).ready(function(){
 	  }
 	});
 
-
+    $('.userPassword').keydown(function(event) {
+        if (event.keyCode == 13) {
+            $(".login").click();
+        }
+    });
 
 
 	$('.login').on('click', function(){

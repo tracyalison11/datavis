@@ -19,7 +19,6 @@ $(document).ready(function(){
                 $('#admin').append(
                     $('<a></a>').attr('href','admin.html').text("Admin")
                 );
-
             }
 		},function(err) {
   			// Read fails
@@ -102,6 +101,7 @@ $(document).ready(function(){
 		var date1 = month + "-" + day + "-" + year;
 
 		var filterVar = "totalDailyScore";
+
 		$('.filter-icons').on('click', 'i', function(){
 			filterVar = $(this).data('filter');
 			console.log(filterVar);
@@ -144,6 +144,7 @@ $(document).ready(function(){
 				
 				}
 			}); //end of forEach loop
+
 			//create chartArray to hold colors, and data necessary for chart object
 			var chartArray = [];
 			var colorsArray = [];
@@ -242,7 +243,8 @@ $(document).ready(function(){
 			
 
 		}); //End of ALL USERS CALLBACK
-	}
+	} //End of drawChart()
+          drawChart();
 
 	  } else {
 	  	//User is not logged in
