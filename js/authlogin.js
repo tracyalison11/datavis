@@ -20,13 +20,17 @@ $(document).ready(function(){
 	$('.login').on('click', function(){
 		var userEmail = $('.userEmail').val();
 		var userPassword = $('.userPassword').val();
-
+		var rememberMe = false;
+		if ($('#checkbox').is(":checked"))
+		{	
+ 			rememberMe = true;
+		}
 		console.log(userEmail);
 		
 		auth.login('password', {
 		email: userEmail,
 		password: userPassword,
-		rememberMe: true
+		rememberMe: rememberMe;
 		});
 		
 	});
