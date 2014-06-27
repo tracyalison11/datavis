@@ -31,6 +31,7 @@ var firebaseObj = new Firebase('https://codehscore.firebaseio.com');
 $('.register').on('click', function(){
 	var userEmail =  $('.email').val();
 	var userPassword = $('.password').val();
+	var phoneNum = $('.phone').val();
 	var firstName = $('.firstName').val();
 	var lastName = $('.lastName').val();
 	var cohort = $('.cohort').val();
@@ -46,6 +47,6 @@ $('.register').on('click', function(){
 	    console.log('User Id: ' + user.uid + ', Email: ' + user.email);
 	    alert(user.email + "has been added to the database with id: " + user.uid); 
 	  }
-	  userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'permissions': permissions, 'email': userEmail});
+	  userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'phoneNum': phoneNum, 'permissions': permissions, 'email': userEmail});
 	});
 });
