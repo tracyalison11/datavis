@@ -24,10 +24,15 @@ div .panel.panel-primary {
 }
 .statScore{
 	float: right;
-	margin-right: 175px;
+	margin-left: 175px;
 	font-size: 1.2em;
+}
+ul{
+	columns:6;
+	-webkit-columns:6;
 }
 li{
 	list-style-type: none;
+	width: 25%;
 }
 
