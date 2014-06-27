@@ -38,7 +38,18 @@ div .panel.panel-primary {
 
 .legend li {
 	display: inline;
-	padding: 10px;
+	padding: 5px;
+}
+.statistics li{
+	display: inline;
+	padding: 5px;
+}
+.statistics li:hover{
+	height:110%;
+	width: 110%;
+}
+.filter-icons i {
+	color: #bf3e11;
 }
 
 
