@@ -7,6 +7,7 @@ $(document).ready(function(){
 	    // an error occurred while attempting login
 	    console.log(error);
 	  } else if (user) {
+          window.open('newsfeed.html', '_self');
 	    // user authenticated with Firebase
 	    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
 	  } else {
@@ -15,7 +16,11 @@ $(document).ready(function(){
 	});
 
 
-
+    $('.userPassword').keydown(function(event) {
+         if (event.keyCode == 13) {
+            $(".login").click();
+         }
+    });
 
 	$('.login').on('click', function(){
 		var userEmail = $('.userEmail').val();
