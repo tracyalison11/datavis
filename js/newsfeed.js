@@ -50,7 +50,7 @@ $(document).ready(function(){
                 + "<td><i class='fa fa-linkedin fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['linkedInNum'] + "</td>"
                 + "<td><i class='fa fa-check-square-o fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['dailyTicketNum'] + "</td>"
                 + "</tr> </table>"
-        );	
+        );
 
 		}); //END OF CURRENT USERS CALLBACK
 
