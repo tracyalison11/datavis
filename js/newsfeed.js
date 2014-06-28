@@ -19,7 +19,6 @@ $(document).ready(function(){
                 $('#admin').append(
                     $('<a></a>').attr('href','admin.html').text("Admin")
                 );
-
             }
 		},function(err) {
   			// Read fails
@@ -36,22 +35,22 @@ $(document).ready(function(){
 				//divide up news feed into a table
 			$('.news-feed').prepend("<br>"
                 + "<table class='table table-hover'> <tr>"
-                + "<td colspan='2'><strong>" + newsFeedData['date'] + "</strong></td>"
-                + "<td><i class='fa fa-star fa-2x'></i>" + "</td><td>" +newsFeedData['totalDailyScore'] + "</td>"
+                + "<td class=dataNum colspan='2'><strong>" + newsFeedData['date'] + "</strong></td>"
+                + "<td><i class='fa fa-star fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['totalDailyScore'] + "</td>"
                 + "</tr> <tr>"
-                + "<td><i class='fa fa-twitter fa-2x'></i>" + "</td><td>" +newsFeedData['twitterNum'] + "</td>"
-                + "<td><i class='fa fa-reddit fa-2x'></i>" + "</td><td>" +newsFeedData['redditNum'] + "</td>"
+                + "<td><i class='fa fa-twitter fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['twitterNum'] + "</td>"
+                + "<td><i class='fa fa-reddit fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['redditNum'] + "</td>"
                 + "</tr> <tr>"
-                + "<td><i class='fa fa-stack-overflow fa-2x'></i>" + "</td><td>" +newsFeedData['stackNum'] +  "</td>"
-                + "<td><i class='fa fa-comment-o fa-flip-horizontal fa-2x'></i>" +"</td><td>" + newsFeedData['quoraNum'] + "</td>"
+                + "<td><i class='fa fa-stack-overflow fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['stackNum'] +  "</td>"
+                + "<td><i class='fa fa-comment-o fa-flip-horizontal fa-2x'></i>" +"</td><td class=dataNum>" + newsFeedData['quoraNum'] + "</td>"
                 + "</tr> <tr>"
-                + "<td><i class='fa fa-github-alt fa-2x'></i>" + "</td><td>" +newsFeedData['githubNum'] + "</td>"
-                + "<td><i class='fa fa-pencil-square fa-2x'></i>" + "</td><td>" +newsFeedData['blogNum'] + "</td>"
+                + "<td><i class='fa fa-github-alt fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['githubNum'] + "</td>"
+                + "<td><i class='fa fa-pencil-square fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['blogNum'] + "</td>"
                 + "</tr> <tr>"
-                + "<td><i class='fa fa-linkedin fa-2x'></i>" + "</td><td>" +newsFeedData['linkedInNum'] + "</td>"
-                + "<td><i class='fa fa-check-square-o fa-2x'></i>" + "</td><td>" +newsFeedData['dailyTicketNum'] + "</td>"
+                + "<td><i class='fa fa-linkedin fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['linkedInNum'] + "</td>"
+                + "<td><i class='fa fa-check-square-o fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['dailyTicketNum'] + "</td>"
                 + "</tr> </table>"
-        );	
+        );
 
 		}); //END OF CURRENT USERS CALLBACK
 
@@ -102,6 +101,7 @@ $(document).ready(function(){
 		var date1 = month + "-" + day + "-" + year;
 
 		var filterVar = "totalDailyScore";
+
 		$('.filter-icons').on('click', 'i', function(){
 			filterVar = $(this).data('filter');
 			console.log(filterVar);
@@ -147,6 +147,7 @@ $(document).ready(function(){
 					console.log(arr);
 				}	
 			}); //end of forEach loop
+
 			//create chartArray to hold colors, and data necessary for chart object
 			var chartArray = [];
 			var colorsArray = [];
@@ -245,7 +246,8 @@ $(document).ready(function(){
 			
 
 		}); //End of ALL USERS CALLBACK
-	}
+	} //End of drawChart()
+          drawChart();
 
 	  } else {
 	  	//User is not logged in

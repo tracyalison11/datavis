@@ -4,7 +4,6 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<meta name="viewport" content="width=device-width, user-scalable=no">
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
 
 	<title>News Feed</title>
@@ -21,42 +20,23 @@
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">News Feed</a></li>
+      <li class="active"><a href="newsfeeds.html">News Feed</a></li>
       <li><a href="form.html">Submit Data</a></li>
-      <li><a href="personalstats.html">Personal Statistics</a></li>
-      <li><a href="reminders.html">Reminders</a></li>
       <li id="admin"></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a id="signOut" href="#">Sign Out</a></li>
     </ul>
   </div>
-</div>	
-<div class="container">
-	<div class="row">
-		<div class="col-lg-4 col-md-4">
-      <h1>News Feed</h1>
-      <div class="news-feed">
-
-      </div>
-		</div>
-		<div class="col-lg-8 col-md-8 report">
-      <h1 class="col-center">Statistics</h1>
-      <ul class="statistics">
-
-      </ul>
-			<canvas id="first-chart" width="600" height="400"></canvas>
-      <ul class="col legend">
-
-      </ul>
-		</div>
-	</div>
-</div>
-
-<script src="includes/jQuery-v2.1.1.js"></script>
-<script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
-<script src="includes/bootstrap.min.js"></script>
-<script src="js/newsfeed.js"></script>
-<script src="includes/Chart.js"></script>
+ </div>
+<div class="phone">
+Phone Number: <input class="phone" type="text" /></div>
+<div class="name">Recipients Name: <input class="customer" type="text" /></div>
+Message: <textarea row="3" col="3" class="msg"></textarea>
+<button class="send" type="button"> SEND </button>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript" src="send.js"></script>
 </body>
 </html>
+
+

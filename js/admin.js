@@ -9,12 +9,22 @@ $(document).ready(function(){
 	    // user authenticated with Firebase
 	    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
 
+          $('#signOut').on('click', function () {
+              auth.logout();
+          });
+
 	    var dataRef = new Firebase('https://codehscore.firebaseio.com/users/'+user.uid+'/info/permissions');
 		dataRef.on('value' , function(snapshot) {
 			// alert("Permissions for user 28 are " + snapshot.val());
+            if(snapshot.val() == 1){
+
+            }else {
+                window.open("newsfeed.html", "_self");
+            }
 		},function(err) {
   			// Read fails
   			alert("User does not have permissions value set");
+            window.open("newsfeed.html", "_self");
 		});
 
 	  } else {
