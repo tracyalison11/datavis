@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	var chatRef = new Firebase('https://codehscore.firebaseio.com');
 	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 	  if (error) {
@@ -76,7 +76,7 @@ $('.register').on('click', function(){
 	var lastName = $('.lastName').val();
 	var cohort = $('.cohort').val();
 	var permissions = $('.permissions').val();
-	
+
 	var userRef = new Firebase('https://codehscore.firebaseio.com/users');
 
 	var auth = new FirebaseSimpleLogin(firebaseObj, function(error, user) {
