@@ -119,30 +119,33 @@ $(document).ready(function(){
 			var arr = [];
 			//create nameArr to hold names of users to associate numbers with
 			var nameArr = [];
+			
 			//for each user, get wanted data
 			snapshot.forEach(function(childSnapshot){
 				var childData = childSnapshot.val();
 				console.log(childData);
+				var tempArr = [];
 				if(childSnapshot.hasChild('stats')){	
-					
-
-					if(childSnapshot.hasChild('stats/'+ date3) == true && childSnapshot.hasChild('stats/'+ date2) == true && childSnapshot.hasChild('stats/'+ date1) == true){		
-						if(childData.stats[date3].totalDailyScore == "undefined"){
-							childData.stats[date3].totalDailyScore = 0;
-						}
-						if(childData.stats[date2].totalDailyScore == "undefined"){
-							childData.stats[date2].totalDailyScore = 0;
-						}
-						if(childData.stats[date1].totalDailyScore == "undefined"){
-							childData.stats[date1].totalDailyScore = 0;
-						}
+					if(childSnapshot.hasChild('stats/'+ date3)){
+						tempArr.push(childData.stats[date3][filterVar]);
+					}else{
+						tempArr.push(0);
+					}
+					if(childSnapshot.hasChild('stats/'+ date2)){
+						tempArr.push(childData.stats[date2][filterVar]);
+					}else{
+						tempArr.push(0);
+					}
+					if(childSnapshot.hasChild('stats/'+ date1)){
+						tempArr.push(childData.stats[date1][filterVar]);
+					}else{
+						tempArr.push(0);
+					}
 					index++;	
-					arr.push([childData.stats[date3][filterVar], childData.stats[date2][filterVar], childData.stats[date1][filterVar]]);
+					arr.push(tempArr);
 					nameArr.push(childData['info']['firstName']);
 					console.log(arr);
-					}	
-				
-				}
+				}	
 			}); //end of forEach loop
 
 			//create chartArray to hold colors, and data necessary for chart object
