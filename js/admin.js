@@ -85,6 +85,7 @@ $('.register').on('click', function(){
 	auth.createUser(userEmail, userPassword, function(error, user) {
 	  if (!error) {
         userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'phoneNum': phoneNum, 'permissions': permissions, 'email': userEmail});
+          alert(userEmail + " has been added to the database");
 	    console.log('User Id: ' + user.uid + ', Email: ' + user.email);
         window.open("admin.html", "_self");
 	  } else {

@@ -33,6 +33,7 @@ $(document).ready(function(){
 			var newsFeedData = snap.val();
 				// console.log(newsFeedData);
 				//divide up news feed into a table
+
 			$('.news-feed').prepend("<br>"
                 + "<table class='table table-hover'> <tr>"
                 + "<td class=dataNum colspan='2'><strong>" + newsFeedData['date'] + "</strong></td>"
@@ -112,6 +113,7 @@ $(document).ready(function(){
 		var drawChart = function(){
 		//allUsersCALLBACK
 		allUsersRef.on('value',function(snapshot){
+            $('.legend').html("");
 			var allUsersData = snapshot.val();
 			
 			var index = 0;
