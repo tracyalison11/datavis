@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link href="css/style2.css" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+<link rel="icon" 
+      type="image/ico" 
+      href="img/stat.ico">
+
+	<title>Personal Statistics</title>
+</head>
+<body>
+<div class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Data Visualization</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="newsfeed.html">News Feed</a></li>
+      <li><a href="form.html">Submit Data</a></li>
+        <li class="active"><a>Personal Statistics</a></li>
+      <li id="admin"></li>
+  
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a id="signOut" href="#">Sign Out</a></li>
+    </ul>
+  </div>
+</div>	
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-8">
+      
+			<canvas id="first-chart" width="700" height="600" style="margin: 0 auto"></canvas>
+      <ul class="col legend">
+
+      </ul>
+    </div>
+    <div class="col-lg-4 col-md-4" id="legend">
+       <ul>
+        <li><i class='fa fa-linkedin fa-2x'></i></li>
+        <li><i class='fa fa-twitter fa-2x'></i></li>
+        <li><i class='fa fa-reddit fa-2x'></i></li>
+        <li><i class='fa fa-stack-overflow fa-2x'></i></li>
+        <li><i class='fa fa-comment-o fa-flip-horizontal fa-2x'></i></li>
+        <li><i class='fa fa-pencil-square fa-2x'></i></li>
+        <li><i class='fa fa-check-square-o fa-2x'></i></li>
+        <li><i class='fa fa-github-alt fa-2x'></i></li>
+        <li><i class='fa fa-star fa-2x'></i></li>
+      </ul>
+		</div>
+</div>
+
+<!-- <div class="container" id="legend">
+  <div class="row">
+    <div class="col-lg-4 col-md-12">
+      <ul>
+        <li><i class='fa fa-linkedin'></i></li>
+        <li><i class='fa fa-twitter'></i></li>
+        <li><i class='fa fa-reddit'></i></li>
+        <li><i class='fa fa-stack-overflow'></i></li>
+        <li><i class='fa fa-comment-o fa-flip-horizontal'></i></li>
+        <li><i class='fa fa-pencil-square'></i></li>
+        <li><i class='fa fa-check-square-o'></i></li>
+        <li><i class='fa fa-github-alt'></i></li>
+        <li><i class='fa fa-star'></i></li>
+      </ul>
+    </div>
+  </div> -->
+
+<script src="includes/jQuery-v2.1.1.js"></script>
+<script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
+<script src="js/personalstats.js"></script>
+<script src="includes/Chart.js"></script>
+</body>
+</html>

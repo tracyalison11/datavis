@@ -1,0 +1,43 @@
+
+
+.container ul{
+	list-style-type: none
+}
+
+.fa-linkedin{
+	color: #dd4814;
+
+}
+
+.fa-twitter{
+	color: #04519b;
+
+}
+
+.fa-reddit{
+	color: #772953;
+
+}
+.fa-stack-overflow{
+	color: #efb73e;
+
+}
+.fa-comment-o{
+	color: #aea79f;
+}
+
+.fa-pencil-square{
+	color: #178acc;
+}
+
+.fa-check-square-o{
+	color: #464545;
+}
+
+.fa-github-alt{
+    color: #7e3f9d;
+}
+
+.fa-star{
+	color: #38b44a;
+}
