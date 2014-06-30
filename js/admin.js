@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	var chatRef = new Firebase('https://codehscore.firebaseio.com');
 	var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 	  if (error) {
@@ -76,7 +76,7 @@ $('.register').on('click', function(){
 	var lastName = $('.lastName').val();
 	var cohort = $('.cohort').val();
 	var permissions = $('.permissions').val();
-	
+
 	var userRef = new Firebase('https://codehscore.firebaseio.com/users');
 
 	var auth = new FirebaseSimpleLogin(firebaseObj, function(error, user) {
@@ -85,6 +85,7 @@ $('.register').on('click', function(){
 	auth.createUser(userEmail, userPassword, function(error, user) {
 	  if (!error) {
         userRef.child(user.uid + '/info').set({'cohort': cohort, 'firstName': firstName, 'lastName': lastName, 'phoneNum': phoneNum, 'permissions': permissions, 'email': userEmail});
+          alert(userEmail + " has been added to the database");
 	    console.log('User Id: ' + user.uid + ', Email: ' + user.email);
         window.open("admin.html", "_self");
 	  } else {

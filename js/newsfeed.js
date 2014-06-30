@@ -33,6 +33,7 @@ $(document).ready(function(){
 			var newsFeedData = snap.val();
 				// console.log(newsFeedData);
 				//divide up news feed into a table
+
 			$('.news-feed').prepend("<br>"
                 + "<table class='table table-hover'> <tr>"
                 + "<td class=dataNum colspan='2'><strong>" + newsFeedData['date'] + "</strong></td>"
@@ -50,7 +51,7 @@ $(document).ready(function(){
                 + "<td><i class='fa fa-linkedin fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['linkedInNum'] + "</td>"
                 + "<td><i class='fa fa-check-square-o fa-2x'></i>" + "</td><td class=dataNum>" +newsFeedData['dailyTicketNum'] + "</td>"
                 + "</tr> </table>"
-        );	
+        );
 
 		}); //END OF CURRENT USERS CALLBACK
 
@@ -112,6 +113,7 @@ $(document).ready(function(){
 		var drawChart = function(){
 		//allUsersCALLBACK
 		allUsersRef.on('value',function(snapshot){
+            $('.legend').html("");
 			var allUsersData = snapshot.val();
 			
 			var index = 0;
@@ -119,30 +121,33 @@ $(document).ready(function(){
 			var arr = [];
 			//create nameArr to hold names of users to associate numbers with
 			var nameArr = [];
+			
 			//for each user, get wanted data
 			snapshot.forEach(function(childSnapshot){
 				var childData = childSnapshot.val();
 				console.log(childData);
+				var tempArr = [];
 				if(childSnapshot.hasChild('stats')){	
-					
-
-					if(childSnapshot.hasChild('stats/'+ date3) == true && childSnapshot.hasChild('stats/'+ date2) == true && childSnapshot.hasChild('stats/'+ date1) == true){		
-						if(childData.stats[date3].totalDailyScore == "undefined"){
-							childData.stats[date3].totalDailyScore = 0;
-						}
-						if(childData.stats[date2].totalDailyScore == "undefined"){
-							childData.stats[date2].totalDailyScore = 0;
-						}
-						if(childData.stats[date1].totalDailyScore == "undefined"){
-							childData.stats[date1].totalDailyScore = 0;
-						}
+					if(childSnapshot.hasChild('stats/'+ date3)){
+						tempArr.push(childData.stats[date3][filterVar]);
+					}else{
+						tempArr.push(0);
+					}
+					if(childSnapshot.hasChild('stats/'+ date2)){
+						tempArr.push(childData.stats[date2][filterVar]);
+					}else{
+						tempArr.push(0);
+					}
+					if(childSnapshot.hasChild('stats/'+ date1)){
+						tempArr.push(childData.stats[date1][filterVar]);
+					}else{
+						tempArr.push(0);
+					}
 					index++;	
-					arr.push([childData.stats[date3][filterVar], childData.stats[date2][filterVar], childData.stats[date1][filterVar]]);
+					arr.push(tempArr);
 					nameArr.push(childData['info']['firstName']);
 					console.log(arr);
-					}	
-				
-				}
+				}	
 			}); //end of forEach loop
 
 			//create chartArray to hold colors, and data necessary for chart object

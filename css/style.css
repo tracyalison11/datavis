@@ -88,8 +88,9 @@ table tr td {
 .dataNum {
 	color: black;
 }
-
-
+.alert {
+    display: none;
+}
 
 
 

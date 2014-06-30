@@ -6,8 +6,9 @@
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src="includes/jQuery-v2.1.1.js"></script>
     <script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
-    <script src="js/admin.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js"></script>
+
+
 	<title>Admin</title>
 </head>
 <body>
@@ -24,6 +25,7 @@
 	    <ul class="nav navbar-nav">
 	      <li><a href="newsfeed.html">News Feed</a></li>
 	      <li><a href="form.html">Submit Data</a></li>
+          <li><a href="personalstats.html">Personal Statistics</a></li>
 	      <li class="active" id="admin"><a href="admin.html">Admin</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
@@ -68,11 +70,11 @@
 									<label for="" class="control-label">Phone Number</label>
 								</div>
 								<div class="col-lg-4 col-md-4 col-xs-4 col-center">
-									<input class="phone form-control" name="phone_input" pattern="[0-9]{10}" type="text" placeholder="555-555-5555" />
+									<input class="phone form-control" name="phone_input" pattern="[0-9]{10}" type="tel" placeholder="555-555-5555" />
 								</div>
 							</div>
 						</div>
-							
+
 						<div class="form-group">
 							<div class="row">
 								<div class="pushleft col-lg-4 col-md-4 col-xs-4 col-center">
@@ -150,11 +152,9 @@
 								</div>
 							</div>
                 <br />
-			</div>					
+			</div>
 		</div> <!-- end of panel -->
 	</div> <!-- end of container -->
-
-
-
+    <script src="js/admin.js"></script>
 </body>
 </html>
