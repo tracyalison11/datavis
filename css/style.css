@@ -1,5 +1,5 @@
 .container {
-	width: 620px;
+	width: 900px;
 	margin: 0 auto;
 }
 
@@ -26,7 +26,7 @@ div .panel.panel-primary {
 
 .btn {
 	
-	margin-left: 295px;
+	margin-left: 65px;
 }
 .statScore{
 	float: right;
@@ -107,9 +107,7 @@ table tr td {
 	list-style-type: none
 }
 
-.fa-linkedin{
-	color: blue;
-
+button.btnDate {
+	margin-left: 65px;
 }
-
 
