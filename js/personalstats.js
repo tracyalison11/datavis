@@ -27,53 +27,59 @@ $(document).ready(function(){
          var data = {
              labels : [chartData[0].date,chartData[1].date,chartData[2].date],
              datasets : [
-                 //twitter
+                 //LinkedIn
                  {
-                     fillColor : "rgba(220,220,220,0.5)",
-                     strokeColor : "rgba(220,220,220,1)",
+                     fillColor : "#dd4814",
+                     strokeColor : "#dd4814",
                      data : [chartData[0].linkedInNum,chartData[1].linkedInNum,chartData[2].linkedInNum]
                  },
-                 //reddit
+                 //Twitter
                  {
-                     fillColor : "rgba(151,187,205,0.5)",
-                     strokeColor : "rgba(151,187,205,1)",
-                     data : [chartData[0].totalDailyScore,chartData[1].totalDailyScore,chartData[2].totalDailyScore]
-                 },
-                 //stackoverflow
-                 {
-                     fillColor : "rgba(100,100,205,0.5)",
-                     strokeColor : "rgba(100,100,205,1)",
+                     fillColor : "#04519b",
+                     strokeColor : "04519b",
                      data : [chartData[0].twitterNum,chartData[1].twitterNum,chartData[2].twitterNum]
+                 },
+                 //Reddit
+                 {
+                     fillColor : "#772953",
+                     strokeColor : "#772953",
+                     data : [chartData[0].redditNum,chartData[1].redditNum,chartData[2].redditNum]
+                 },
+                 //Stack Overflow
+                 {
+                     fillColor : "#efb73e",
+                     strokeColor : "#efb73e",
+                     data : [chartData[0].stackNum,chartData[1].stackNum,chartData[2].stackNum]
                  },
                  //quora
                  {
-                     fillColor : "rgba(100,100,205,0.5)",
-                     strokeColor : "rgba(100,100,205,1)",
-                     data : [chartData[0].redditNum,chartData[1].redditNum,chartData[2].redditNum]
-                 },
-                 //github
-                 {
-                     fillColor : "rgba(100,100,205,0.5)",
-                     strokeColor : "rgba(100,100,205,1)",
-                     data : [chartData[0].stackNum,chartData[1].stackNum,chartData[2].stackNum]
+                     fillColor : "#aea79f",
+                     strokeColor : "#aea79f",
+                     data : [chartData[0].quoraNum,chartData[1].quoraNum,chartData[2].quoraNum]
                  },
                  //blog
                  {
-                     fillColor : "rgba(100,100,205,0.5)",
-                     strokeColor : "rgba(100,100,205,1)",
-                     data : [chartData[0].quoraNum,chartData[1].quoraNum,chartData[2].quoraNum]
-                 },
-                 //linkedIn
-                 {
-                     fillColor : "rgba(100,100,205,0.5)",
-                     strokeColor : "rgba(100,100,205,1)",
+                     fillColor : "#178acc",
+                     strokeColor : "#178acc",
                      data : [chartData[0].blogNum,chartData[1].blogNum,chartData[2].blogNum]
                  },
-                 //totalDaily
+                 //Ticket for Nick
                  {
-                     fillColor : "rgba(100,100,205,0.5)",
-                     strokeColor : "rgba(100,100,205,1)",
+                     fillColor : "#464545",
+                     strokeColor : "#464545",
                      data : [chartData[0].dailyTicketNum,chartData[1].dailyTicketNum,chartData[2].dailyTicketNum]
+                 },
+                 //Github
+                 {
+                     fillColor : "#7e3f9d",
+                     strokeColor : "#7e3f9d",
+                     data : [chartData[0].githubNum,chartData[1].githubNum,chartData[2].githubNum]
+                 },
+                 //Total Daily Score
+                  {
+                     fillColor : "#38b44a",
+                     strokeColor : "#38b44a",
+                     data : [chartData[0].totalDailyScore,chartData[1].totalDailyScore,chartData[2].totalDailyScore]
                  },
              ]
          }
