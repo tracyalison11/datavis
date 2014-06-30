@@ -73,39 +73,81 @@ $(document).ready(function(){
 		var testArr = [];
 		//get all users info
 		var allUsersRef = new Firebase('https://codehscore.firebaseio.com/users/');
-		
-		var date3 = new Date();
-		date3.setDate(date3.getDate()-2);
+		//let user go back and forth on dates
+		var dateSelected = 0;
+		$('.pickDate-left').on('click', function(){
+			dateSelected -= 1;
+			console.log(date3, date2, date1);
+			calculateDates();
+		});
+		$('.pickDate-right').on('click', function(){
+			if (dateSelected < 0){
+				dateSelected += 1;
+				console.log(date3, date2, date1);
+				calculateDates();
+			}
+		});
 
-		var currentTime = new Date()
-		var month = date3.getMonth() + 1
-		var day = date3.getDate()
-		var year = date3.getFullYear()
-		var date3 = month + "-" + day + "-" + year;
+		var date1,date2,date3;
+		(function(){
+			date3 = new Date();
+			date3.setDate(date3.getDate() + dateSelected - 2);
+			var currentTime = new Date()
+			var month = date3.getMonth() + 1
+			var day = date3.getDate()
+			var year = date3.getFullYear()
+			date3 = month + "-" + day + "-" + year;
 
-		var date2 = new Date();
-		date2.setDate(date2.getDate()-1);
+			date2 = new Date();
+			date2.setDate(date2.getDate() + dateSelected -1);
+			var currentTime = new Date()
+			var month = date2.getMonth() + 1
+			var day = date2.getDate()
+			var year = date2.getFullYear()
+			date2 = month + "-" + day + "-" + year;
 
-		var currentTime = new Date()
-		var month = date2.getMonth() + 1
-		var day = date2.getDate()
-		var year = date2.getFullYear()
-		var date2 = month + "-" + day + "-" + year;
+			date1 = new Date();
+			date1.setDate(date1.getDate());
+			var currentTime = new Date()
+			var month = date1.getMonth() + 1
+			var day = date1.getDate() + dateSelected;
+			var year = date1.getFullYear()
+			date1 = month + "-" + day + "-" + year;
+		})();
 
-		var date1 = new Date();
-		date1.setDate(date1.getDate());
+		var calculateDates = function(){
+			date3 = new Date();
+			date3.setDate(date3.getDate() + dateSelected - 2);
+			var currentTime = new Date()
+			var month = date3.getMonth() + 1
+			var day = date3.getDate()
+			var year = date3.getFullYear()
+			date3 = month + "-" + day + "-" + year;
 
-		var currentTime = new Date()
-		var month = date1.getMonth() + 1
-		var day = date1.getDate()
-		var year = date1.getFullYear()
-		var date1 = month + "-" + day + "-" + year;
+			date2 = new Date();
+			date2.setDate(date2.getDate() + dateSelected -1);
+			var currentTime = new Date()
+			var month = date2.getMonth() + 1
+			var day = date2.getDate()
+			var year = date2.getFullYear()
+			date2 = month + "-" + day + "-" + year;
 
+			date1 = new Date();
+			date1.setDate(date1.getDate());
+			var currentTime = new Date()
+			var month = date1.getMonth() + 1
+			var day = date1.getDate() + dateSelected;
+			var year = date1.getFullYear()
+			date1 = month + "-" + day + "-" + year;
+			drawChart();
+		}
+
+		//set default filter to totalDailyScore
 		var filterVar = "totalDailyScore";
 
+		//when user clicks on icon to filter graph, filterVar gets type of stat
 		$('.filter-icons').on('click', 'i', function(){
 			filterVar = $(this).data('filter');
-			console.log(filterVar);
 			$('.legend').html("");
 			drawChart();
 		});
@@ -125,7 +167,7 @@ $(document).ready(function(){
 			//for each user, get wanted data
 			snapshot.forEach(function(childSnapshot){
 				var childData = childSnapshot.val();
-				console.log(childData);
+				// console.log(childData);
 				var tempArr = [];
 				if(childSnapshot.hasChild('stats')){	
 					if(childSnapshot.hasChild('stats/'+ date3)){
@@ -146,7 +188,7 @@ $(document).ready(function(){
 					index++;	
 					arr.push(tempArr);
 					nameArr.push(childData['info']['firstName']);
-					console.log(arr);
+					// console.log(arr);
 				}	
 			}); //end of forEach loop
 
