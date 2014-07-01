@@ -3,13 +3,10 @@
 	margin: 0 auto;
 }
 
-.container1{
-margin: 0 auto;
 
-}
 
-div .panel.panel-primary {
-	margin: 50px 100px 100px 0;
+.panel.panel-primary {
+	margin-left: 130px;
 	height: 300px;
 	width: 600px;
 }
@@ -27,6 +24,10 @@ div .panel.panel-primary {
 .btn {
 	
 	margin-left: 65px;
+}
+
+.login {
+	margin-left: 300px;
 }
 .statScore{
 	float: right;
@@ -111,3 +112,13 @@ button.btnDate {
 	margin-left: 65px;
 }
 
+@media (max-width: 480px) {
+	
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+	.btn {
+		margin-left: 0px;
+	}
+}
