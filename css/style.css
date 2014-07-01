@@ -4,7 +4,7 @@
 }
 
 .container1{
-margin: 0 auto;
+    margin: 0 auto;
 
 }
 
@@ -12,6 +12,7 @@ div .panel.panel-primary {
 	margin: 50px 100px 100px 0;
 	height: 300px;
 	width: 600px;
+    align-content: center;
 }
 
 .form-horizontal .form-group {
